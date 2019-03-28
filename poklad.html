@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var username = "anonymous"
+        function getCookie(cname) {
+            var name = cname + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for(var i = 0; i <ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        function checkUsername(){
+
+            if(!getCookie("username") == "") {
+                username = getCookie("username");
+            }
+
+            return username;
+
+        }
+    </script>
+</head>
+<body>
+<h3>Ahoj <span id="username"></span>!</h3>
+<p id="test-area"></p>
+<img src="/img/banana.gif" /><br/>
+<a href="javascript:logout()">Logout</a>
+<h3>Messsages</h3>
+<div id="posts">
+</div>
+<h4>Leave a Message</h4>
+<form onsubmit="return submitMessage()"  >
+    <textarea id="message.area"></textarea>
+    <button type="submit">Submit</button><button type="reset">Clear</button>
+</form>
+<script>
+    function submitMessage(){
+        var msgDiv = document.createElement("div");
+        msgDiv.setAttribute("class","msg");
+        var author = document.createElement("p");
+        author.setAttribute("class","author");
+        var date = document.createElement("p");
+        date.setAttribute("class","post-time");
+        var message = document.createElement("p");
+        message.setAttribute("class","message");
+
+        message.appendChild(document.createTextNode(document.getElementById("message.area").value));
+        date.appendChild(document.createTextNode(new Date()));
+        author.appendChild(document.createTextNode(checkUsername() + " said..."));
+
+        //message.innerText = document.getElementById("message.area").innerText;
+        //date.innerText = new Date();
+        //author.innerText = checkUsername();
+
+        msgDiv.appendChild(author);
+        msgDiv.appendChild(date);
+        msgDiv.appendChild(message);
+
+        document.getElementById("posts").appendChild(msgDiv);
+        document.getElementById("message.area").value = '';
+
+        return false;
+    }
+
+    function logout(){
+        sessionStorage.clear();
+        localStorage.clear();
+        window.location.replace('/logout')
+    }
+
+    document.getElementById("username").innerText = checkUsername();
+
+    function init(){
+
+        var req = new XMLHttpRequest();
+
+        req.onreadystatechange = function(){
+
+            if(req.readyState === 4 && req.status === 200){
+                var IDKey = req.getResponseHeader("IDKEY")
+                var sessionKey = req.getResponseHeader("SESSION_KEY")
+
+                console.log("DEBUG IDKey " + IDKey)
+                console.log("DEBUG SessionKEY " + sessionKey)
+
+                localStorage.setItem("id-key", IDKey)
+                sessionStorage.setItem("session-key", sessionKey)
+
+                document.getElementById('test-area').appendChild(document.createTextNode(localStorage.getItem("id-key")))
+            }
+
+        }
+
+        req.open("POST", "/treasure")
+        req.setRequestHeader("Content-Type","text/plain")
+        req.send("")
+
+       // localStorage.setItem("idKey", )
+       // sessionStorage.setItem("sessionKey")
+    }
+
+    window.onload = init()
+</script>
+
+</body>
+</html>
