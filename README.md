@@ -1,3 +1,3 @@
-## Cypress Skoleni
+## Test App
 
-Tento projekt je jenom pro skoleni se na tom, co muzu delat se Cypressem
+Jednoducha aplikace pro testovani a skoleni
