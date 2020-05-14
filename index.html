@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+table.target { border: #8888FF 3pt solid; padding: 5pt; margin: 10pt; }
+td.unselected { background-color: #88FF88; height: 100px; width: 100px; }
+td.selected { background-color: #FF8888; height: 100px; width: 100px; }
+span#user { color: #8888FF; font-weight: bold }
+  </style>
+  <script>
+
+var username = "Anonymous"
+
+function selectCell(event){
+//  alert(event.target.id)
+  var current = document.getElementsByClassName("selected")[0]
+  if (current != undefined){
+    current.className = "unselected"
+  }
+  event.target.className = "selected";
+}
+
+function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i <ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+function checkUsername(){
+
+  if(!getCookie("username") == "") {
+    username = getCookie("username");
+  }
+
+  return username;
+
+}
+
+  </script>
+</head>
+<body>
+<p>Hello <span id="user">Krtek</span>!</p>
+<p id="response"></p>
+<form id="testForm">
+Message: <input type="text" value="Enter message here" name="message" ></input>
+<a href="javascript:submitForm()" >Submit</a></input>
+  <a href="javascript:alert('hello')">Alert</a>
+  <a href="/login">Login</a>
+</form>
+<script>
+function submitForm(){
+   document.getElementById("response").textContent = document.getElementById("testForm").elements["message"].value
+}
+</script>
+<table class="target" id="targetTable" >
+  <tbody>
+  <tr><td id="c0x0" class="unselected" onClick="javascript:selectCell(event)"></td><td id="c0x1" class="unselected"></td><td id="c0x2" class="unselected"></td></tr>
+  <tr><td id="c1x0" class="unselected"></td><td id="c1x1" class="unselected"></td><td id="c1x2" class="unselected"></td></tr>
+  <tr><td id="c2x0" class="unselected"></td><td id="c2x1" class="unselected"></td><td id="c2x2" class="unselected"></td></tr>
+</tbody>
+</table>
+<script>
+window.onload = function(event) {
+  event.target.className = "selected";
+  var cells = document.getElementsByClassName("unselected");
+  for (let cell of cells){
+    cell.onclick = selectCell;
+    }
+  }
+  document.getElementById("user").innerText = checkUsername();
+  document.cookie = "id_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
+</script>
+</body>
+</html>
