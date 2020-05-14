@@ -1,3 +1,5 @@
 FAKE LICENSE
 
-Toto dokument je jen pro testovani. 
+Toto dokument je jen pro testovani.
+
+BLA BLA BLA 
