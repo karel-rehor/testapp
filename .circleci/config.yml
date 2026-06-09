@@ -4,6 +4,10 @@ parameters:
   default-node-image:
     type: string
     default: "cimg/node:25.9"
+  trigger:
+    type: enum
+    enum: [none, do-release]
+    default: none
 
 commands:
   init-dependencies:
@@ -42,6 +46,8 @@ workflows:
     jobs:
       - tests
   release:
+    when:
+      equal: [ do-release, << pipeline.parameters.trigger >> ]
     jobs:
       - tests
       - release
