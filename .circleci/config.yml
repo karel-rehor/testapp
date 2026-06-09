@@ -23,8 +23,21 @@ jobs:
           name: Vanilla Tests
           command: |
             npm run test
+  release:
+    docker:
+      - image: << pipeline.parameters.default-node-image  >>
+    steps:
+      - checkout
+      - run:
+          name: Release Script
+          command: |
+            ./scripts/on-release.sh
 
 workflows:
   build:
     jobs:
       - tests
+  release:
+    jobs:
+      - tests
+      - release
