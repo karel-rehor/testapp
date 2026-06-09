@@ -51,7 +51,9 @@ workflows:
       - tests
   release:
     when:
-      equal: [ do-release, << pipeline.parameters.target >> ]
+      and:
+        - equal: [ master, << pipeline.git.branch>> ]
+        - equal: [ do-release, << pipeline.parameters.target >> ]
     jobs:
       - tests
       - release
