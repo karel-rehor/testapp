@@ -7,9 +7,10 @@ parameters:
 
 commands:
   init-dependencies:
-    - run:
-        name: "Install Dependencies"
-        command: npm install
+    steps:
+      - run:
+          name: "Install Dependencies"
+          command: npm install
 
 jobs:
   tests:
