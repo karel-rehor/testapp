@@ -1,0 +1,27 @@
+version: 2.1
+
+parameters:
+  default-node-image:
+    type: string
+    default: "cimg/node:25.9"
+
+commands:
+  init-dependencies:
+    - run:
+        name: "Install Dependencies"
+        command: npm install
+
+jobs:
+  tests:
+    steps:
+      - checkout
+      - init-dependencies
+      - run:
+          name: Vanilla Tests
+          command: |
+            npm run test
+
+workflow:
+  build:
+    jobs:
+      - tests:
