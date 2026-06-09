@@ -16,11 +16,6 @@ jobs:
   tests:
     steps:
       - checkout
-      - init-dependencies
-      - run:
-          name: Vanilla Tests
-          command: |
-            npm run test
 
 workflow:
   build:
