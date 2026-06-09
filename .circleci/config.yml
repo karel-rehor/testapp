@@ -29,6 +29,10 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Verify Envars
+          command: |
+            echo From config.yml SUPER_SECRET=\"$SUPER_SECRET\"
+      - run:
           name: Release Script
           command: |
             ./scripts/on-release.sh
