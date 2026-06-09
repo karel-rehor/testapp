@@ -4,10 +4,13 @@ parameters:
   default-node-image:
     type: string
     default: "cimg/node:25.9"
-  trigger:
+  target:
     type: enum
     enum: [none, do-release]
     default: none
+  release:
+    type: string
+    default: "0.0.1"
 
 commands:
   init-dependencies:
@@ -36,6 +39,7 @@ jobs:
           name: Verify Envars
           command: |
             echo From config.yml SUPER_SECRET=\"$SUPER_SECRET\"
+            echo Release value << pipeline.parameters.release >>
       - run:
           name: Release Script
           command: |
@@ -47,7 +51,7 @@ workflows:
       - tests
   release:
     when:
-      equal: [ do-release, << pipeline.parameters.trigger >> ]
+      equal: [ do-release, << pipeline.parameters.target >> ]
     jobs:
       - tests
       - release
