@@ -14,10 +14,17 @@ commands:
 
 jobs:
   tests:
+    docker:
+      - image: default-node-image
     steps:
       - checkout
+      - init-dependencies
+      - run:
+          name: Vanilla Tests
+          command: |
+            npm run test
 
-workflow:
+workflows:
   build:
     jobs:
-      - tests:
+      - tests
