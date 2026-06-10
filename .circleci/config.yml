@@ -65,7 +65,7 @@ workflows:
     jobs:
       - tests
   release:
-    <<: *when_experim
     jobs:
       - tests
-      - release
+      - release:
+        <<: *release_filter
