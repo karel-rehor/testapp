@@ -66,6 +66,7 @@ workflows:
       - tests
   release:
     jobs:
-      - tests
+      - tests:
+          <<: *release_filter
       - release:
           <<: *release_filter
