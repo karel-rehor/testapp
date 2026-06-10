@@ -39,7 +39,7 @@ jobs:
           name: Verify Envars
           command: |
             echo From config.yml SUPER_SECRET=\"$SUPER_SECRET\"
-            echo Release value << pipeline.parameters.release >>
+            echo Release value << pipeline.git.tag >>
       - run:
           name: Release Script
           command: |
