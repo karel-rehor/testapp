@@ -68,4 +68,8 @@ workflows:
     jobs:
       - tests
       - release:
-        <<: *release_filter
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              ignore: /.*/
