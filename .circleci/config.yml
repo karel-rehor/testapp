@@ -18,6 +18,15 @@ commands:
       - run:
           name: "Install Dependencies"
           command: npm install
+      - run:
+          name: "Download GO"
+          command: curl -O https://dl.google.com/go/go1.25.10.linux-amd64.tar.gz
+      - run:
+          name: "Unpack GO"
+          command: tar -C /usr/local -xzf go1.25.10.linux-amd64.tar.gz && export PATH=$PATH:/usr/local/go/bin
+      - run:
+          name: "Verify GO"
+          command: go version
 
 jobs:
   tests:
