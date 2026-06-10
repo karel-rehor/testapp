@@ -19,6 +19,9 @@ commands:
           name: "Install Dependencies"
           command: npm install
       - run:
+          name: "DEBUG inspect /usr/local"
+          command: ls -al /usr && ls -al /usr/local
+      - run:
           name: "Download GO"
           command: curl -O https://dl.google.com/go/go1.25.10.linux-amd64.tar.gz
       - run:
