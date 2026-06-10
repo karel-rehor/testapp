@@ -69,4 +69,6 @@ workflows:
       - tests:
           <<: *release_filter
       - release:
+          requires:
+            - tests
           <<: *release_filter
