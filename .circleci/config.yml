@@ -26,7 +26,10 @@ commands:
           command: curl -O https://dl.google.com/go/go1.25.10.linux-amd64.tar.gz
       - run:
           name: "Unpack GO"
-          command: mkdir ~/local && tar -C ~/local -xzf go1.25.10.linux-amd64.tar.gz && export PATH=$PATH:~/local/go/bin
+          command: |
+            mkdir ~/local
+            tar -C ~/local -xzf go1.25.10.linux-amd64.tar.gz
+            echo 'export PATH=$PATH:~/local/go/bin' >> $BASH_ENV
       - run:
           name: "Verify GO"
           command: go version
