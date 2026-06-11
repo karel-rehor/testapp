@@ -1,6 +1,6 @@
 # Change Log
 
-## 0.0.1 [unreleased]
+## 0.0.9-beta [2026-06-11]
 
 ### Dependencies
 
