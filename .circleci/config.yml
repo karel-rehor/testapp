@@ -44,6 +44,10 @@ jobs:
           name: Release Script
           command: |
             ./scripts/on-release.sh
+      - store_artifacts:
+          path: ./CHANGELOG.md
+      - store_artifacts:
+          path: ./version.txt
 
 release_filter: &release_filter
   filters:
