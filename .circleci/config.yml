@@ -18,21 +18,6 @@ commands:
       - run:
           name: "Install Dependencies"
           command: npm install
-      - run:
-          name: "DEBUG inspect /usr/local"
-          command: whoami && ls -al /usr && ls -al /usr/local && ls -al /usr/local/bin
-      - run:
-          name: "Download GO"
-          command: curl -O https://dl.google.com/go/go1.25.10.linux-amd64.tar.gz
-      - run:
-          name: "Unpack GO"
-          command: |
-            mkdir ~/local
-            tar -C ~/local -xzf go1.25.10.linux-amd64.tar.gz
-            echo 'export PATH=$PATH:~/local/go/bin' >> $BASH_ENV
-      - run:
-          name: "Verify GO"
-          command: go version
 
 jobs:
   tests:
@@ -59,6 +44,10 @@ jobs:
           name: Release Script
           command: |
             ./scripts/on-release.sh
+      - store_artifacts:
+          path: ./CHANGELOG.md
+      - store_artifacts:
+          path: ./version.txt
 
 release_filter: &release_filter
   filters:
