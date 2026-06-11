@@ -1,0 +1,9 @@
+### LICENSE INFO
+
+### HERE be license info
+### More license info
+### Very important license info
+### Nobody reads past here
+### License info ended
+
+TESTAPP_VERSION="0.0.0"
