@@ -109,7 +109,7 @@ push_back_to_github() {
   git config user.email "karl.koerner@bonitoo.io"
   git config user.name "karel rehor"
   printf "DEBUG working on branch %s\n" "$CURRENT_BRANCH"
-  printf "DEBUG check branches"
+  printf "DEBUG check branches\n"
   git branch
   git diff
   printf "DEBUG Check branch\n"
