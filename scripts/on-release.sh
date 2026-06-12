@@ -8,6 +8,8 @@ echo From $0 SUPER_SECRET=\"$SUPER_SECRET\"
 NEWEST_TAG=$(git describe --tags --abbrev=0)
 CURRENT_BRANCH=$(git branch --show-current)
 
+printf "DEBUG CURRENT_BRANCH #%#" "$CURRENT_BRANCH"
+
 if [[ "$NEWEST_TAG" =~ ^v.* ]]
 then
   RELEASE_NUM=${NEWEST_TAG:1}
@@ -103,7 +105,7 @@ update_version() {
 push_back_to_github() {
   printf "Here changes to local files would be pushed back to github.\n"
   printf "TODO\n"
-  printf "DEBUG update git config"
+  printf "DEBUG update git config\n"
   git config user.email "karl.koerner@bonitoo.io"
   git config user.name "karel rehor"
   printf "DEBUG working on branch %s\n" "$CURRENT_BRANCH"
@@ -111,7 +113,10 @@ push_back_to_github() {
   printf "DEBUG Check branch\n"
   git branch --show-current
   git commit -am "chore: prepare for next development iteration [skip ci]"
-  git log
+  printf "DEBUG check log\n"
+  git log -n 3
+  #printf "DEBUG attempt push\n"
+  #git push origin $CURRENT_BRANCH
 }
 
 verify_secret
