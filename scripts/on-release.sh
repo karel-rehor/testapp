@@ -105,6 +105,8 @@ push_back_to_github() {
   printf "TODO\n"
   printf "DEBUG working on branch %s\n" "$CURRENT_BRANCH"
   git diff
+  printf "DEBUG Check branch"
+  git branch --show-current
 }
 
 verify_secret
