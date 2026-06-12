@@ -8,3 +8,5 @@ line added in branch chore/verify-branch-filters
 
 line added to test pipeline trigger
 
+Another line to test release triggers
+
