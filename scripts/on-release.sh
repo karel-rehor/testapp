@@ -107,6 +107,8 @@ push_back_to_github() {
   git diff
   printf "DEBUG Check branch"
   git branch --show-current
+  git commit -am "chore: prepare for next development iteration [skip ci]"
+  git log
 }
 
 verify_secret
