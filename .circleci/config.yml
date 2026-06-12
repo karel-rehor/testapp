@@ -46,6 +46,7 @@ jobs:
             echo Branch value: << pipeline.git.branch >>
             echo Commit body value: << pipeline.git.commit.body >>
             echo Commit url: << pipeline.git.commit.url >>
+            echo Base revision: << pipeline.git.base_revision >>
       - run:
           name: Release Script
           command: |
