@@ -1,6 +1,16 @@
 # Change Log
 
+## 0.0.10-beta2 [unreleased]
+
+### CI
+
+Testing
+
 ## 0.0.9-beta1 [2026-06-11]
+
+### Features
+
+Nothing to see here.
 
 ### Dependencies
 
