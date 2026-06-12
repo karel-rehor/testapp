@@ -102,6 +102,7 @@ update_version() {
 push_back_to_github() {
   printf "Here changes to local files would be pushed back to github."
   printf "TODO"
+  git diff
 }
 
 verify_secret
