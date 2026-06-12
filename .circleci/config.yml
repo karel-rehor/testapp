@@ -42,8 +42,10 @@ jobs:
           name: Verify Envars
           command: |
             echo From config.yml SUPER_SECRET=\"$SUPER_SECRET\"
-            echo Release value << pipeline.git.tag >>
-            echo Branch value << pipeline.git.branch >>
+            echo Release value: << pipeline.git.tag >>
+            echo Branch value: << pipeline.git.branch >>
+            echo Commit body value: << pipeline.git.commit.body >>
+            echo Commit url: << pipeline.git.commit.url >>
       - run:
           name: Release Script
           command: |
