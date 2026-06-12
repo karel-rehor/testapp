@@ -8,7 +8,7 @@ echo From $0 SUPER_SECRET=\"$SUPER_SECRET\"
 NEWEST_TAG=$(git describe --tags --abbrev=0)
 CURRENT_BRANCH=$(git branch --show-current)
 
-printf "DEBUG CURRENT_BRANCH #%s#" "$CURRENT_BRANCH"
+printf "DEBUG CURRENT_BRANCH #%s#\n" "$CURRENT_BRANCH"
 
 if [[ "$NEWEST_TAG" =~ ^v.* ]]
 then
@@ -109,6 +109,8 @@ push_back_to_github() {
   git config user.email "karl.koerner@bonitoo.io"
   git config user.name "karel rehor"
   printf "DEBUG working on branch %s\n" "$CURRENT_BRANCH"
+  printf "DEBUG check branches"
+  git branch
   git diff
   printf "DEBUG Check branch\n"
   git branch --show-current
