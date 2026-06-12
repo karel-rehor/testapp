@@ -1,6 +1,6 @@
 # Change Log
 
-## 0.0.10-beta2 [unreleased]
+## 0.0.10-beta2 [2026-06-12]
 
 ### CI
 
