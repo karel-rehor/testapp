@@ -103,12 +103,12 @@ update_version() {
 push_back_to_github() {
   printf "Here changes to local files would be pushed back to github.\n"
   printf "TODO\n"
-  print "DEBUG update git config"
+  printf "DEBUG update git config"
   git config user.email "karl.koerner@bonitoo.io"
   git config user.name "karel rehor"
   printf "DEBUG working on branch %s\n" "$CURRENT_BRANCH"
   git diff
-  printf "DEBUG Check branch"
+  printf "DEBUG Check branch\n"
   git branch --show-current
   git commit -am "chore: prepare for next development iteration [skip ci]"
   git log
