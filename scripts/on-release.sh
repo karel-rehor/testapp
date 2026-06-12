@@ -6,6 +6,7 @@ echo RELEASE WOULD BE STARTED HERE on $DATE
 echo From $0 SUPER_SECRET=\"$SUPER_SECRET\"
 
 NEWEST_TAG=$(git describe --tags --abbrev=0)
+CURRENT_BRANCH=$(git branch --show-current)
 
 if [[ "$NEWEST_TAG" =~ ^v.* ]]
 then
@@ -100,8 +101,9 @@ update_version() {
 
 # TODO
 push_back_to_github() {
-  printf "Here changes to local files would be pushed back to github."
-  printf "TODO"
+  printf "Here changes to local files would be pushed back to github.\n"
+  printf "TODO\n"
+  printf "DEBUG working on branch %s\n" "$CURRENT_BRANCH"
   git diff
 }
 
