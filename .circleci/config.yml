@@ -18,6 +18,9 @@ commands:
       - run:
           name: "Install Dependencies"
           command: npm install
+      - run:
+          name: "Check for python"
+          command: python --version
 
 jobs:
   tests:
